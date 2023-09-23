@@ -8,6 +8,8 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            background-color: #1c1c28; /* Main background color */
+            color: #97a4e3; /* Text color */
         }
         
         body, textarea {
@@ -17,22 +19,55 @@
 
         /* Container styling */
         .textarea-container {
-            height: calc(100vh - 120px); /* subtracting the top and bottom padding */
-            display: flex;  /* This enables flexbox */
-            justify-content: space-between;  /* This adds space between the textareas */
-            padding: 10px;  /* Adjust this value to tweak the overall padding */
+            height: calc(100vh - 120px);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
         }
 
         /* Textarea styling */
         textarea {
-            width: 45%;  /* This ensures each textarea takes up half of the container's width */
-            height: 100%;  /* This ensures each textarea takes up the full height of the container */
-            padding: 10px;  /* Adjust this value to tweak the padding inside each textarea */
-            box-sizing: border-box;  /* This ensures the padding and border don't increase the element's total width/height */
-            resize: none;  /* This disables manual resizing of the textareas */
+            width: 45%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: none;
+            background-color: #121219; /* Textbox background color */
+            border: 4px solid #5350af; /* Textbox border color */
+            color: #97a4e3; /* Text color inside textarea */
         }
+
         button {
-           margin-top: 20px;
+            margin-top: 20px;
+            border: 2px solid #5350af; /* Button border color */
+            background-color: #121219; /* Button background color */
+            color: #97a4e3; /* Button text color */
+            padding: 10px 20px; /* Button padding for a nicer look */
+            cursor: pointer; /* Makes the cursor indicate it's clickable */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        button:hover {
+            background-color: #5350af; /* Button background color on hover */
+            color: #121219; /* Button text color on hover */
+        }
+        /* For Webkit browsers like Chrome and Safari */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1c1c28; /* Color of the track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #5350af; /* Color of the thumb */
+            border-radius: 6px; /* Rounded corners on the thumb */
+        }
+
+        /* For Firefox */
+        body {
+            scrollbar-color: #5350af #1c1c28;
         }
     </style>
 </head>
