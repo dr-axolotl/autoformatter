@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sed Application</title>
+    <style>
+        /* Add CSS here for responsiveness */
+    </style>
+</head>
+<body>
+    <div>
+        <textarea id="input"></textarea>
+        <textarea id="output" readonly></textarea>
+    </div>
+
+<button onclick="convertContent()">Convert</button>
+
+    <script>
+        let timeout;
+
+        function copyToClipboard() {
+            let output = document.getElementById('output');
+            output.select();
+            document.execCommand('copy');
+        }
+    </script>
+    <script>
+        function convertContent() {
+            const inputContent = document.getElementById('input').value;
+            fetch('/convert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: inputContent })
+                            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').value = data.output;
+            })
+            .catch(error => {
+                console.error('Conversion failed:', error);
+            });
+        }
+    </script>
+
+<button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+</body>
+</html>

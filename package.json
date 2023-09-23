@@ -1,0 +1,19 @@
+{
+  "name": "autoformatter",
+  "version": "1.0.0",
+  "description": "sed tool for modifying html input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr-axolotl/autoformatter.git"
+  },
+  "author": "draxolotl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dr-axolotl/autoformatter/issues"
+  },
+  "homepage": "https://github.com/dr-axolotl/autoformatter#readme"
+}
