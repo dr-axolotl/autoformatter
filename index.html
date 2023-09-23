@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sed Application</title>
+    <title>handbook autoformatter</title>
     <style>
-        /* Add CSS here for responsiveness */
+        /* Basic reset */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, textarea {
+            margin: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Container styling */
+        .textarea-container {
+            height: calc(100vh - 120px); /* subtracting the top and bottom padding */
+            display: flex;  /* This enables flexbox */
+            justify-content: space-between;  /* This adds space between the textareas */
+            padding: 10px;  /* Adjust this value to tweak the overall padding */
+        }
+
+        /* Textarea styling */
+        textarea {
+            width: 45%;  /* This ensures each textarea takes up half of the container's width */
+            height: 100%;  /* This ensures each textarea takes up the full height of the container */
+            padding: 10px;  /* Adjust this value to tweak the padding inside each textarea */
+            box-sizing: border-box;  /* This ensures the padding and border don't increase the element's total width/height */
+            resize: none;  /* This disables manual resizing of the textareas */
+        }
+        button {
+           margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div>
+    <div class="textarea-container">
         <textarea id="input"></textarea>
         <textarea id="output" readonly></textarea>
     </div>
 
-<button onclick="convertContent()">Convert</button>
+<script>
+    function convertAndCopy() {
+        const inputContent = document.getElementById('input').value;
+        fetch('/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ input: inputContent })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('output').value = data.output;
 
-    <script>
-        let timeout;
-
-        function copyToClipboard() {
+            // Copy to clipboard after the conversion
             let output = document.getElementById('output');
             output.select();
             document.execCommand('copy');
-        }
-    </script>
-    <script>
-        function convertContent() {
-            const inputContent = document.getElementById('input').value;
-            fetch('/convert', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ input: inputContent })
-                            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('output').value = data.output;
-            })
-            .catch(error => {
-                console.error('Conversion failed:', error);
-            });
-        }
-    </script>
+        })
+        .catch(error => {
+            console.error('Conversion failed:', error);
+        });
+    }
+</script>
 
-<button onclick="copyToClipboard()">Copy to Clipboard</button>
+<button onclick="convertAndCopy()">convert & copy to clipboard</button>
 
 </body>
 </html>
