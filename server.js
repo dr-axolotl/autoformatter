@@ -32,7 +32,7 @@ app.post('/convert', (req, res) => {
                 return;
             }
         });
-        res.json({ output: input });
+        res.json({ output: input.trim() });
     });
 });
 
