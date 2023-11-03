@@ -2,9 +2,8 @@
   "name": "autoformatter",
   "version": "1.0.0",
   "description": "sed tool for modifying html input",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,10 +15,5 @@
   "bugs": {
     "url": "https://github.com/dr-axolotl/autoformatter/issues"
   },
-  "homepage": "https://github.com/dr-axolotl/autoformatter#readme",
-  "dependencies": {
-    "express": "4.17.1",
-    "body-parser": "1.19.0",
-    "express-basic-auth": "1.1.7"
-  }
+  "homepage": "https://github.com/dr-axolotl/autoformatter#readme"
 }

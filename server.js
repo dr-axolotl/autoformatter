@@ -40,8 +40,8 @@ app.post('/convert', (req, res) => {
 
 // HTTPS options
 const options =  {
-    key: fs.readFileSync('/etc/letsencrypt/live/cingulate.dev/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/cingulate.dev/cert.pem')
+    key: fs.readFileSync('/etc/ssl/private/privkey.pem'),
+    cert: fs.readFileSync('/etc/ssl/certs/fullchain.pem')
 };
 
 // HTTPS Server
