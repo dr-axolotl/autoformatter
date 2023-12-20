@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const basicAuth = require('express-basic-auth');
 const child_process = require('child_process');
-const https = require('https');
+const http = require('http'); // Use HTTP module instead of HTTPS
 const fs = require('fs');
 const path = require('path');
 
@@ -38,14 +38,7 @@ app.post('/convert', (req, res) => {
     });
 });
 
-// HTTPS options
-const options =  {
-    key: fs.readFileSync('/etc/ssl/private/privkey.pem'),
-    cert: fs.readFileSync('/etc/ssl/certs/fullchain.pem')
-};
-
-// HTTPS Server
-https.createServer(options, app).listen(3001, '0.0.0.0', () => {
-    console.log('Server running on port 3001');
+// Create an HTTP server instead of HTTPS
+http.createServer(app).listen(3002, '0.0.0.0', () => {
+    console.log('Server running on port 3002');
 });
-

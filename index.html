@@ -81,7 +81,7 @@
 <script>
     function convertAndCopy() {
         const inputContent = document.getElementById('input').value;
-        fetch('/convert', {
+        fetch('/autoformatter/convert', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
